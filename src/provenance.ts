@@ -28,8 +28,18 @@ export type LicenseId =
  */
 export type LicenseObligation = "produced-work" | "derivative-database";
 
-/** Upstream data sources. */
-export type SourceId = "osm" | "plateau" | "gsi" | "n03" | "copernicus" | "srtm";
+/**
+ * Upstream data sources. `gsi`/`fgd`/`n03` are the Survey-Act-restricted Japanese
+ * government sources kept separate from `osm`/`plateau` per ADR-013.
+ */
+export type SourceId =
+  | "osm"
+  | "plateau"
+  | "gsi"
+  | "fgd"
+  | "n03"
+  | "copernicus"
+  | "srtm";
 
 /** One provenance entry: a single source contributing to an artifact. */
 export interface Provenance {
