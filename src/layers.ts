@@ -16,7 +16,8 @@ export type LayerKind =
   | "coastline"
   | "road"
   | "rail"
-  | "landuse";
+  | "landuse"
+  | "building";
 
 /**
  * A resolved layer for a feature: its {@link LayerKind}, an optional finer
@@ -131,6 +132,13 @@ export const canonicalOsmLayerMapping: OsmLayerMapping = [
       },
     ],
     layer: (tags) => ({ kind: "rail", subclass: tags["railway"], zOrder: 51 }),
+  },
+  // building — OSM building footprints (Phase-2 buildings layer). Exclude
+  // building=no; fold the building value into subclass. Kept before the broad
+  // landuse catch-all (and after roads/rail) so it doesn't swallow other areas.
+  {
+    match: [{ key: "building", value: { not: ["no"] } }],
+    layer: (tags) => ({ kind: "building", subclass: tags["building"], zOrder: 60 }),
   },
   // landuse — broad catch-all (kept last so specific rules win).
   {

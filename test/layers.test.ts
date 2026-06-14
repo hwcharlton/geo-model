@@ -68,6 +68,21 @@ test("landuse: landuse=residential is the broad catch-all", () => {
   } satisfies Layer);
 });
 
+test("building: building=yes classifies as building with subclass", () => {
+  const layer = classifyOsmFeature({ building: "yes" });
+  assert.deepEqual(layer, { kind: "building", subclass: "yes", zOrder: 60 } satisfies Layer);
+});
+
+test("building: building=apartments folds the value into subclass", () => {
+  const layer = classifyOsmFeature({ building: "apartments" });
+  assert.equal(layer?.kind, "building");
+  assert.equal(layer?.subclass, "apartments");
+});
+
+test("building: building=no is EXCLUDED (returns undefined)", () => {
+  assert.equal(classifyOsmFeature({ building: "no" }), undefined);
+});
+
 test("unmatched tags return undefined", () => {
   assert.equal(classifyOsmFeature({ amenity: "cafe" }), undefined);
   assert.equal(classifyOsmFeature({}), undefined);
