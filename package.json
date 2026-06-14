@@ -1,6 +1,6 @@
 {
   "name": "@hwcharlton/geo-model",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Deps-free shared model for the @hwcharlton geo-data ecosystem: layer taxonomy + OSM→layer mapping, EPSG:6677 (JGD2011 Japan Plane Rectangular CS IX) projection, and license/provenance/manifest types.",
   "type": "module",
   "exports": {

@@ -9,6 +9,8 @@
  *     ({@link ./projection}).
  *  3. License / provenance / attribution types + the artifact manifest builder
  *     ({@link ./provenance}).
+ *  4. The `geo-area-pack/1` on-disk wire manifest + the repo-relative pack-path
+ *     layout shared by producer and consumer ({@link ./pack}).
  */
 
 export {
@@ -43,3 +45,15 @@ export {
   OSM_ATTRIBUTION,
   buildManifest,
 } from "./provenance.js";
+
+export {
+  type DetailTier,
+  type AreaPackSource,
+  type AreaPackSimplify,
+  type AreaPackCompression,
+  type AreaPackPipeline,
+  type AreaPackArtifact,
+  type AreaPackManifest,
+  type PackPaths,
+  packPaths,
+} from "./pack.js";
