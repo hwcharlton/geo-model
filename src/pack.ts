@@ -17,8 +17,12 @@
  * Deps-free and browser-safe: types only + one pure string-building function.
  */
 
-/** A baked pack's detail tier. */
-export type DetailTier = "high" | "med" | "low";
+/**
+ * A baked pack's detail tier. `high`/`med`/`low` are the area-pack simplify
+ * tiers; `flat` is a single un-tiered representation used by layers where
+ * per-detail LODs don't apply (e.g. the `building` footprint layer).
+ */
+export type DetailTier = "high" | "med" | "low" | "flat";
 
 /**
  * The `source` block of an {@link AreaPackManifest}: where the data came from.
